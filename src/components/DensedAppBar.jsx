@@ -1,4 +1,6 @@
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
+
+const navItems = ['Home', 'Upload', 'Favourites']
 
 function DensedAppBar() {
 	return (
@@ -11,7 +13,7 @@ function DensedAppBar() {
 					href="/"
 					sx={{
 						mr: 2,
-						display: { xs: 'none', md: 'flex' },
+						flexGrow: 1,
 						fontFamily: 'monospace',
 						fontWeight: 700,
 						letterSpacing: '.3rem',
@@ -21,11 +23,16 @@ function DensedAppBar() {
 				>
 					Catmandu
 				</Typography>
-				<Typography variant="h6" color="inherit" component="div">
-					Photos
-				</Typography>
+				<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+					{navItems.map((item) => (
+						<Button key={item} sx={{ color: '#fff' }}>
+							{item}
+						</Button>
+					))}
+				</Box>
 			</Toolbar>
 		</AppBar>
 	)
 }
+
 export default DensedAppBar
